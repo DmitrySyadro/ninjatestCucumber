@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+//merely for GITHUB
 public class AccountSuccessfulPage {
     WebDriver driver;
     public AccountSuccessfulPage(WebDriver driver){
