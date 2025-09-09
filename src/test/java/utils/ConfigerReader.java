@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public class ConfigerReader {
+public interface ConfigerReader {
     public static Properties intializeproperties() {
         Properties prop = new Properties();
         File proFile = new File(System.getProperty("user.dir")+"\\src\\test\\java\\config\\config.properties");
@@ -16,5 +16,8 @@ public class ConfigerReader {
 
         }
         return prop;
+
+
     }
+
 }
