@@ -11,7 +11,7 @@ public class Order {
 
     @Given("The user login in the app")
     public void the_user_login_in_the_app() {
-        base.driver.get(arg0);
+        base.driver.get("");
     }
 
     @When("The user add any product to back and checkout")

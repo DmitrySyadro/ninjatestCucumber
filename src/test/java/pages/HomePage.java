@@ -1,6 +1,7 @@
 package pages;
 
 import org.apache.commons.logging.Log;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,10 @@ public class HomePage {
     private WebElement myAccountDropMenu;
     @FindBy(linkText = "Login")
     private WebElement Loginicon;
+    @FindBy(linkText = "Register")
+    private WebElement Registericon;
+    @FindBy(xpath = "//ul[@class=''breadcrumb']//a[text()='Register']")
+    private WebElement AssertRegisterCrumb;
 
     public void clickOnMyAccount(){
         myAccountDropMenu.click();
@@ -33,4 +38,9 @@ public class HomePage {
         Loginicon.click();
         return new LoginPage(driver);
     }
+    public LoginPage clickReg(){
+        Registericon.click();
+        return new LoginPage(driver);
+    }
+
 }
