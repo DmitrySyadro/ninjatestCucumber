@@ -14,7 +14,7 @@ Feature: Registration functionality
     Then A user's account should be created successfully
 
 
-
+  @test1
   Scenario: A user creates a duplicate account
     Given A User navigates to the register account page
     When A user enters the details into the fields with a duplicate email

@@ -2,7 +2,8 @@ package feature;
 
 import factory.DriverFactory;
 import io.cucumber.java.en.*;
-import org.apache.commons.logging.Log;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -13,9 +14,11 @@ import pages.LoginPage;
 import utils.CommonUtils;
 
 
-public class Login {
 
-    WebDriver driver;
+
+public class Login {
+    Logger logger = LogManager.getLogger(Login.class);
+    static WebDriver driver;
     private LoginPage loginPage;
     private AccountPage accountPage;
 
@@ -24,19 +27,23 @@ public class Login {
 
     @Given("User navigates to the login page")
     public void user_navigates_to_the_login_page() {
+        logger.info("----Starting test case----");
         driver = DriverFactory.getDriver();
         HomePage homePage = new HomePage(driver);
+        logger.info("Clicking on my account icon");
         homePage.clickOnMyAccount();
         loginPage = homePage.clickonLoginOption();
     }
 
     @When("User has entered the valid email into the email field {string}")
     public void user_has_entered_the_valid_email_into_the_email_field(String email) {
+        logger.info("Entering the email");
         loginPage.Emailsend(CommonUtils.getEmailTimesStamp());
     }
 
     @When("User has entered the valid password into the password field {string}")
     public void user_has_entered_the_valid_password_into_the_password_field(String password) {
+        logger.info("Entering the password");
         loginPage.Passwordsend(CommonUtils.getEmailTimesStamp());
     }
 

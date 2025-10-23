@@ -3,8 +3,11 @@ package feature;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -17,18 +20,35 @@ public class TC_RF_001 {
     LoginPage loginPage;
     HomePage homePage;
 
-    @Test
-    public void verifyBreadcrumbURlHeadingTitleofRegisterAccountPage(){
-        WebDriverManager.firefoxdriver().setup();
+    @BeforeMethod
+    public void setup(){
+        String browsername = "firefox";
+        String browserChro = "chrome";
+        if(browsername.equals("firefox")){
+            driver = new FirefoxDriver();
+        }else if(browserChro.equals("chrome")){
+            driver = new ChromeDriver();
+        }
+
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.get("https://tutorialsninja.com/demo");
+    }
+
+    @AfterMethod
+    public void teardown(){
+        if(driver!=null) {
+            driver.quit();
+        }
+    }
 
 
+    @Test(priority = 1)
+    public void verifyBreadcrumbURlHeadingTitleofRegisterAccountPage(){
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
 
-        driver.get("https://tutorialsninja.com/demo");
         homePage.clickOnMyAccount();
         homePage.clickReg();
 
@@ -46,7 +66,7 @@ public class TC_RF_001 {
         String expectedTitle = "Register Account";
         Assert.assertEquals(driver.getTitle(), expectedTitle);
 
-        driver.quit();
+
     }
 
     public static String generateEmail(){
