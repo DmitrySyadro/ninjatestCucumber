@@ -15,7 +15,7 @@ import pages.LoginPage;
 import java.time.Duration;
 import java.util.Date;
 
-public class TC_RF_001 {
+public class URL{
     WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;

@@ -23,6 +23,8 @@ public class LoginPage {
     private WebElement email1;
     @FindBy(id = "input-password")
     private WebElement password1;
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+    private WebElement actualResult;
 
 
     public void Emailsend(String emailTimesStamp){
@@ -40,6 +42,10 @@ public class LoginPage {
     public AccountPage ClickLogin(){
         clickontheLoginButton.click();
         return new AccountPage(driver);
+    }
+    public Object getTextFromResponse(){
+        actualResult.getText();
+        return null;
     }
     public boolean thepropermessage(){
         getproperwarningmessage.isDisplayed();

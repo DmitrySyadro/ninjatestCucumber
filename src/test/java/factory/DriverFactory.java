@@ -1,10 +1,14 @@
 package factory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConfigerReader;
 
 import java.time.Duration;
@@ -37,6 +41,8 @@ public class DriverFactory {
         return driver;
 
     }
+
+
 
     public static WebDriver getDriver(){
         return driver;
